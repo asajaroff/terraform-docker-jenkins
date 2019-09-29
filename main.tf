@@ -3,7 +3,7 @@ provider "docker" {
 }
 
 resource "docker_container" "jenkins-master" {
-    name  = "jenkins-master"
+    name  = "${var.container-name}"
     image = "jenkinsci/blueocean"
     logs  = true
     user  = "root"
@@ -25,6 +25,6 @@ resource "docker_container" "jenkins-master" {
     }
     ports = {
         internal = 8080
-        external = 8080
+        external = 80
     }
 }
